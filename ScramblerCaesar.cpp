@@ -105,14 +105,13 @@ void ScramblerCaesar::onEncrypted()
     }
     QString changeText;
     std::string text = textInput->toPlainText().toStdString();
-    auto te = textInput->toPlainText().toStdString();
     if (encryptR->isChecked())
         changeText = QString::fromStdString(caesarCipher(text, moveBox->currentText().toInt()));
     else
         changeText = QString::fromStdString(caesarCipher(text, (alphabetLengthEn - moveBox->currentText().toInt())));
 
     textOutput->setText(changeText);
-    saveData();
+    saveHistory();
 }
 
 void ScramblerCaesar::onClickedRadioB()
@@ -168,7 +167,7 @@ std::string ScramblerCaesar::caesarCipher(std::string &s, int move)
     return s;
 }
 
-void ScramblerCaesar::saveData()
+void ScramblerCaesar::saveHistory()
 {
     std::ofstream fWrite;
     fWrite.open(filepath, std::ofstream::app);

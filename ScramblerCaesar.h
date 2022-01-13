@@ -16,7 +16,7 @@ class ScramblerCaesar : public QWidget
 {
     Q_OBJECT
 public:
-    ScramblerCaesar(QWidget *parent = Q_NULLPTR);
+    explicit ScramblerCaesar(QWidget *parent = Q_NULLPTR);
 private slots:
     void onEncrypted();
     void onClickedRadioB();
@@ -33,6 +33,6 @@ private:
     QComboBox* moveBox;
     QRadioButton* encryptR;
     QRadioButton* decipherR;
-    void saveData();
+    void saveHistory();
 };
 #endif // WIDGET_H
